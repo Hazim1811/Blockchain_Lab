@@ -11,82 +11,6 @@
 				"type": "constructor"
 			},
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "CountReset",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "Deposit",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "TransferBetween",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "Withdraw",
-				"type": "event"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -171,13 +95,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "resetCount",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -186,24 +103,6 @@
 					}
 				],
 				"name": "setCount",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "transferBetween",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -240,14 +139,8 @@
 				"getCount()": {
 					"notice": "Anyone can read the current counter"
 				},
-				"resetCount()": {
-					"notice": "Owner can reset the count to zero"
-				},
 				"setCount(uint256)": {
 					"notice": "Owner can set any value for `count`"
-				},
-				"transferBetween(address,uint256)": {
-					"notice": "Transfer deposited balance from caller to another user without withdrawing"
 				},
 				"withdraw(uint256)": {
 					"notice": "Withdraw up to the caller’s own deposited amount"
@@ -258,7 +151,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Simplecontract.sol": "SimpleContract"
+			"contracts/Smartcontract.sol": "SimartContract"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -272,12 +165,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Simplecontract.sol": {
-			"keccak256": "0x49ce4febae271c1d9611082880fc893d57c1716d16f0b47c7eabcddc4952f11b",
+		"contracts/Smartcontract.sol": {
+			"keccak256": "0xdc4db4ccccfa562f3b51078c98e6008ac8e76fe90f9c669534f1a60a3a6afeb1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://853421c932b0f04a944bcad6c54bc1a9197cb5e7faeb193c30958345ed03dd83",
-				"dweb:/ipfs/QmPV8Vd47iy6RrG7zzRqP668U4Wg7rzNE7F8393rcTaDBU"
+				"bzz-raw://36ba02bc5cad4f51fc3ed032689db044754f01a019d620324025e967fcf99bb3",
+				"dweb:/ipfs/QmWAuL1PFvYgyVYaLHe8zJrwvemGVqGgWaWppPobK1y9Da"
 			]
 		}
 	},
