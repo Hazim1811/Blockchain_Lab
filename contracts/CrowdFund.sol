@@ -30,10 +30,10 @@ contract CrowdFund {
     }
 
     // Constructor: set goal and deadline (in seconds from now)
-    constructor(uint _goalWei, uint _durationSeconds) {
+    constructor(uint _goalWei, uint _durationMinutes) {
         owner = msg.sender;
         goal = _goalWei;
-        deadline = block.timestamp + _durationSeconds;
+        deadline = block.timestamp + (_durationMinutes * 1 minutes);
     }
 
     // 1. contribute() – accepts Ether from contributors

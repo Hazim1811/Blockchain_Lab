@@ -14,7 +14,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "_durationSeconds",
+						"name": "_durationMinutes",
 						"type": "uint256"
 					}
 				],
@@ -253,11 +253,11 @@
 	},
 	"sources": {
 		"contracts/CrowdFund.sol": {
-			"keccak256": "0xcec2285486d7166641518776918ff42f1f3120e9a517ae85f19dfc111f9d8207",
+			"keccak256": "0x5d306f9b425cf750db35b0f59a74a835535b34ab26b7742f252327dacb0cd52f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6ebae2ec36a421e9525b573e37a54c5f35260f445341b352b28ddc831b34eebb",
-				"dweb:/ipfs/QmeLGMVHpssVYqxZM9TLMtVd2riHCT2QG1oFGLJsyEXqqB"
+				"bzz-raw://c713ccfe4f4be5d84ea633e99200664d77b46ad5c81dacf65df334898ae885a5",
+				"dweb:/ipfs/QmbLxxzUFKEyej9ymkNyWVcp9rBz7uNuQeTPiDS7LAtLr4"
 			]
 		}
 	},
