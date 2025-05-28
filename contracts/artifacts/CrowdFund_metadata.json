@@ -14,7 +14,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "_durationSec",
+						"name": "_durationSeconds",
 						"type": "uint256"
 					}
 				],
@@ -73,17 +73,19 @@
 				"type": "event"
 			},
 			{
-				"stateMutability": "payable",
-				"type": "fallback"
-			},
-			{
-				"inputs": [],
-				"name": "amountRaised",
-				"outputs": [
+				"inputs": [
 					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"name": "backers",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -95,7 +97,7 @@
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "currentBalance",
+						"name": "",
 						"type": "uint256"
 					}
 				],
@@ -130,19 +132,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "contributorCount",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "deadline",
 				"outputs": [
 					{
@@ -160,22 +149,22 @@
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "goalWei",
+						"name": "_goal",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "deadlineTs",
+						"name": "_deadline",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "raisedWei",
+						"name": "_raised",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "numContributors",
+						"name": "_numContributors",
 						"type": "uint256"
 					}
 				],
@@ -210,6 +199,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "raised",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "refund",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -221,10 +223,6 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"stateMutability": "payable",
-				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -255,11 +253,11 @@
 	},
 	"sources": {
 		"contracts/CrowdFund.sol": {
-			"keccak256": "0xa029605493722ee71e45afd153d07456ba0fd476929f160ba02b7b15eeb0e3f7",
+			"keccak256": "0xcec2285486d7166641518776918ff42f1f3120e9a517ae85f19dfc111f9d8207",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6a7c0e8b87da61b3e78bdec1169a4e105cca54183aaee0acd38a840ec7a13458",
-				"dweb:/ipfs/QmNfJ3rv5RPJafV3kWs4QctKzrzfJfhTWCeyPJuGMiZhWc"
+				"bzz-raw://6ebae2ec36a421e9525b573e37a54c5f35260f445341b352b28ddc831b34eebb",
+				"dweb:/ipfs/QmeLGMVHpssVYqxZM9TLMtVd2riHCT2QG1oFGLJsyEXqqB"
 			]
 		}
 	},
