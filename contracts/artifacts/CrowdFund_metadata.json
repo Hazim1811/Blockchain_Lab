@@ -315,11 +315,11 @@
 	},
 	"sources": {
 		"contracts/CrowdFund.sol": {
-			"keccak256": "0x3cf3b3b3f12259c4f43edb2eec194e98c054f511a035b82b13af99760969106e",
+			"keccak256": "0xd9f7f2a9d48122cfc14a9115b215317493b3c8bc448b79421f6ec62eb014c22b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5454330eb31763b7a0e60a017064a54069b65e440cdaf8d3683108b33c42c83f",
-				"dweb:/ipfs/Qmb6cjybcV7BpWgvyMVpUXKcbyzavN5KhcFKmDPEpZELwk"
+				"bzz-raw://e2424e4acf566ccbeee79685f1dc0d0be81bcfed833d3a5c5a0935aec7639523",
+				"dweb:/ipfs/QmRNhD5rnsakuCcgef7Cc5jYx9si8YvZ86hYsJKgfFUygV"
 			]
 		}
 	},

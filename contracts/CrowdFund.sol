@@ -101,12 +101,11 @@ contract CrowdFund {
     }
 
     // 6. This is to get to know the time left for the transaction
-    function getTimeLeft() public view returns (uint) {
-    if (block.timestamp >= deadline) {
-        return 0;
-    } else {
-        return deadline - block.timestamp;
+    function getTimeLeft() public view returns (uint256) {
+        if (block.timestamp >= deadline) {
+            return 0;
+        } else {
+            return deadline - block.timestamp;
+        }
     }
-}
-
 }
