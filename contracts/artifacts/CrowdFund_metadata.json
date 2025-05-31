@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.30+commit.73712a01"
+		"version": "0.8.29+commit.ab55807c"
 	},
 	"language": "Solidity",
 	"output": {
@@ -9,7 +9,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_goalWei",
+						"name": "_goal",
 						"type": "uint256"
 					},
 					{
@@ -46,7 +46,7 @@
 					{
 						"indexed": false,
 						"internalType": "uint256",
-						"name": "totalRaised",
+						"name": "totalAmount",
 						"type": "uint256"
 					}
 				],
@@ -73,19 +73,32 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
 				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdrawn",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "amountRaised",
+				"outputs": [
 					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"name": "backers",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -132,6 +145,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "contributorCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "deadline",
 				"outputs": [
 					{
@@ -159,12 +185,35 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "_raised",
+						"name": "_amountRaised",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_numContributors",
+						"name": "_contributorCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "_goalReached",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTimeLeft",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
 						"type": "uint256"
 					}
 				],
@@ -186,12 +235,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "owner",
+				"name": "goalReached",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "bool",
 						"name": "",
-						"type": "address"
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -199,12 +248,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "raised",
+				"name": "owner",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -222,6 +271,19 @@
 				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawn",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -253,11 +315,11 @@
 	},
 	"sources": {
 		"contracts/CrowdFund.sol": {
-			"keccak256": "0x5d306f9b425cf750db35b0f59a74a835535b34ab26b7742f252327dacb0cd52f",
+			"keccak256": "0x3cf3b3b3f12259c4f43edb2eec194e98c054f511a035b82b13af99760969106e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c713ccfe4f4be5d84ea633e99200664d77b46ad5c81dacf65df334898ae885a5",
-				"dweb:/ipfs/QmbLxxzUFKEyej9ymkNyWVcp9rBz7uNuQeTPiDS7LAtLr4"
+				"bzz-raw://5454330eb31763b7a0e60a017064a54069b65e440cdaf8d3683108b33c42c83f",
+				"dweb:/ipfs/Qmb6cjybcV7BpWgvyMVpUXKcbyzavN5KhcFKmDPEpZELwk"
 			]
 		}
 	},

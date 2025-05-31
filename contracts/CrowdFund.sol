@@ -2,91 +2,111 @@
 pragma solidity ^0.8.0;
 
 contract CrowdFund {
-    // State
     address public owner;
-    uint public goal;
-    uint public deadline;
-    uint public raised;
-    mapping(address => uint) public contributions;
-    address[] public backers;
+    uint256 public goal;
+    uint256 public deadline;
+    uint256 public amountRaised;
+    uint256 public contributorCount;
+
+    mapping(address => uint256) public contributions;
+    bool public goalReached;
+    bool public withdrawn;
 
     // Events
-    event FundReceived(address indexed contributor, uint amount);
-    event GoalReached(uint totalRaised);
-    event Refunded(address indexed contributor, uint amount);
+    event FundReceived(address indexed contributor, uint256 amount);
+    event GoalReached(uint256 totalAmount);
+    event Refunded(address indexed contributor, uint256 amount);
+    event Withdrawn(address indexed owner, uint256 amount);
 
-    // Modifiers
     modifier onlyOwner() {
-        require(msg.sender == owner, "Not the owner");
-        _;
-    }
-    modifier beforeDeadline() {
-        require(block.timestamp < deadline, "Past deadline");
-        _;
-    }
-    modifier afterDeadline() {
-        require(block.timestamp >= deadline, "Too early");
+        require(msg.sender == owner, "Not contract owner");
         _;
     }
 
-    // Constructor: set goal and deadline (in seconds from now)
-    constructor(uint _goalWei, uint _durationMinutes) {
+    modifier beforeDeadline() {
+        require(block.timestamp < deadline, "Deadline has passed");
+        _;
+    }
+
+    modifier afterDeadline() {
+        require(block.timestamp >= deadline, "Deadline not reached");
+        _;
+    }
+
+    constructor(uint256 _goal, uint256 _durationMinutes) {
         owner = msg.sender;
-        goal = _goalWei;
+        goal = _goal;
         deadline = block.timestamp + (_durationMinutes * 1 minutes);
     }
 
-    // 1. contribute() – accepts Ether from contributors
+    // 1. Contribute
     function contribute() external payable beforeDeadline {
-        require(msg.value > 0, "Must send ETH");
-        if (contributions[msg.sender] == 0) {
-            backers.push(msg.sender);
-        }
+        require(msg.value > 0, "Must send Ether");
+        if (contributions[msg.sender] == 0) contributorCount += 1;
         contributions[msg.sender] += msg.value;
-        raised += msg.value;
+        amountRaised += msg.value;
         emit FundReceived(msg.sender, msg.value);
-
-        if (raised >= goal) {
-            emit GoalReached(raised);
+        if (amountRaised >= goal && !goalReached) {
+            goalReached = true;
+            emit GoalReached(amountRaised);
         }
     }
 
-    // 2. checkBalance() – view the current funds raised
-    function checkBalance() external view returns (uint) {
-        return raised;
+    // 2. View balance
+    function checkBalance() external view returns (uint256) {
+        return amountRaised;
     }
 
-    // 3. withdraw() – Only the owner can withdraw if the target is reached
+    // 3. Withdraw (owner only, after goal & before refund)
     function withdraw() external onlyOwner {
-        require(raised >= goal, "Goal not reached");
-        uint amount = raised;
-        raised = 0;
-        (bool success, ) = owner.call{value: amount}("");
-        require(success, "Withdrawal failed");
+        require(goalReached, "Goal not reached");
+        require(!withdrawn, "Already withdrawn");
+        withdrawn = true;
+        uint256 amount = address(this).balance;
+        payable(owner).transfer(amount);
+        emit Withdrawn(owner, amount);
     }
 
-    // 4. refund() – Contributors can request a refund if the goal is not met by the deadline
+    // 4. Refund (if deadline passed & goal not met)
     function refund() external afterDeadline {
-        require(raised < goal, "Goal was met");
-        uint contributed = contributions[msg.sender];
-        require(contributed > 0, "No contributions");
+        require(amountRaised < goal, "Goal was reached, cannot refund");
+        uint256 contributed = contributions[msg.sender];
+        require(contributed > 0, "Nothing to refund");
         contributions[msg.sender] = 0;
-        (bool success, ) = msg.sender.call{value: contributed}("");
-        require(success, "Refund failed");
+        payable(msg.sender).transfer(contributed);
         emit Refunded(msg.sender, contributed);
     }
 
-    // 5. getDetails() – returns goal, deadline, amount raised, and contributor count
+    // 5. Get campaign details
     function getDetails()
         external
         view
         returns (
-            uint _goal,
-            uint _deadline,
-            uint _raised,
-            uint _numContributors
+            uint256 _goal,
+            uint256 _deadline,
+            uint256 _amountRaised,
+            uint256 _contributorCount,
+            address _owner,
+            bool _goalReached
         )
     {
-        return (goal, deadline, raised, backers.length);
+        return (
+            goal,
+            deadline,
+            amountRaised,
+            contributorCount,
+            owner,
+            goalReached
+        );
     }
+
+    // 6. This is to get to know the time left for the transaction
+    function getTimeLeft() public view returns (uint) {
+    if (block.timestamp >= deadline) {
+        return 0;
+    } else {
+        return deadline - block.timestamp;
+    }
+}
+
 }
